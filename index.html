@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>images</title>
+    <title>FashionDriven</title>
     <link rel="stylesheet" href="./CSS/reset.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,30 +22,30 @@
         <div class="container">
             <div class="opcoes-pedido">
                 <div class="box">
-
+                    
                     <!--Modelo-->
 
                     <h2>Escolha o modelo</h2>
                     <ul class="modelos">
-                        <li class="opcao_modelo t-shirt">
+                        <li class="opcao_modelo t-shirt" onclick="selecionaModelo(this)">
                             <div class="icone">
                             <img src="./images/tshirt.png" alt=""> 
                             </div>
                             <h3>T-shirt</h3>
                         </li>
 
-                        <li class="opcao_modelo camiseta">
+                        <li class="opcao_modelo camiseta" onclick="selecionaModelo(this)">
                             <div class="icone">
-                            <img src="./images/Camiseta.png" alt=""> 
+                                 <img src="./images/Camiseta.png" alt=""> 
                             </div>
                             <h3>Camiseta</h3>
                         </li>
 
-                        <li class="opcao_modelo manga-longa">
+                        <li class="opcao_modelo manga-longa" onclick="selecionaModelo(this)">
                             <div class="icone">
-                            <img src="./images/Mangalonga.png" alt=""> 
+                                <img src="./images/Mangalonga.png" alt=""> 
                             </div>
-                            <h3>Manga longa</h3>
+                            <h3> <i>Manga longa</i> </h3>
                         </li>
                     </ul>
 
@@ -53,21 +53,21 @@
 
                     <h2>Escolha a gola</h2>
                     <ul class="golas">
-                        <li class="opcao_gola gola_v">
+                        <li class="opcao_gola gola_v" onclick="selecionaGola(this)">
                             <div class="icone">
-                            <img src="./images/GolaV.png" alt=""> 
+                                <img src="./images/GolaV.png" alt=""> 
                             </div>
                             <h3>Gola V</h3>
                         </li>
 
-                        <li class="opcao_gola gola_redonda">
+                        <li class="opcao_gola gola_redonda" onclick="selecionaGola(this)"">
                             <div class="icone">
-                            <img src="./images/GolaRedonda.png" alt=""> 
+                                <img src="./images/GolaRedonda.png" alt=""> 
                             </div>
                             <h3>Gola Redonda</h3>
                         </li>
 
-                        <li class="opcao_gola gola_polo">
+                        <li class="opcao_gola gola_polo" onclick="selecionaGola(this)"">
                             <div class="icone">
                             <img src="./images/GolaPolo.png" alt=""> 
                             </div>
@@ -79,21 +79,21 @@
 
                     <h2>Escolha o tecido</h2>
                     <ul class="tecidos">
-                        <li class="opcao_tecido seda">
+                        <li class="opcao_tecido seda" onclick="selecionaTecido(this)">
                             <div class="icone">
                             <img src="./images/Seda.png" alt=""> 
                             </div>
                             <h3>Seda</h3>
                         </li>
 
-                        <li class="opcao_tecido algodao">
+                        <li class="opcao_tecido algodao" onclick="selecionaTecido(this)">
                             <div class="icone">
                             <img src="./images/Algodão.png" alt=""> 
                             </div>
                             <h3>Algodão</h3>
                         </li>
 
-                        <li class="opcao_tecido poliester">
+                        <li class="opcao_tecido poliester" onclick="selecionaTecido(this)">
                             <div class="icone">
                             <img src="./images/Poliester.png" alt=""> 
                             </div>
@@ -102,12 +102,10 @@
                     </ul>
                     <h2>Imagem de referência</h2>
 
-                    <input type="text" placeholder="Insira o link">
+                    <input type="text" placeholder="Insira o link" onchange="isNull()"/>
 
                     <button>Confirmar pedido</button>
                 </div>
-
-                
             </div>
 
             <div class="ilustracao">
@@ -121,30 +119,6 @@
         <div class="ultimos-pedidos">
             <h1>Ultimos pedidos</h1>
             <div class="ultimos-pedidos-list">
-                <div class="pedido">
-                    <img src="./images/Blusa1.png" alt="">
-                    <div class="texto"> <b>Criador:</b> teste</div>
-                </div>
-                
-                <div class="pedido">
-                    <img src="./images/Blusa2.png" alt="">
-                    <div class="texto"> <b>Criador:</b> teste</div>
-                </div>
-
-                <div class="pedido">
-                    <img src="./images/Blusa3.png" alt="">
-                    <div class="texto"> <b>Criador:</b> teste</div>
-                </div>
-
-                <div class="pedido">
-                    <img src="./images/Blusa4.png" alt="">
-                    <div class="texto"> <b>Criador:</b> teste</div>
-                </div>
-
-                <div class="pedido">
-                    <img src="./images/Blusa5.png" alt="">
-                    <div class="texto"> <b>Criador:</b> teste</div>
-                </div>
 
             </div>
         </div>
