@@ -28,21 +28,21 @@
                     <h2>Escolha o modelo</h2>
                     <ul class="modelos">
                         <li class="opcao_modelo t-shirt" onclick="selecionaModelo(this)">
-                            <div class="icone">
+                            <div class="icone t-shirt">
                             <img src="./images/tshirt.png" alt=""> 
                             </div>
                             <h3>T-shirt</h3>
                         </li>
 
                         <li class="opcao_modelo camiseta" onclick="selecionaModelo(this)">
-                            <div class="icone">
+                            <div class="icone camiseta">
                                  <img src="./images/Camiseta.png" alt=""> 
                             </div>
                             <h3>Camiseta</h3>
                         </li>
 
                         <li class="opcao_modelo manga-longa" onclick="selecionaModelo(this)">
-                            <div class="icone">
+                            <div class="icone manga-longa">
                                 <img src="./images/Mangalonga.png" alt=""> 
                             </div>
                             <h3> <i>Manga longa</i> </h3>
@@ -53,22 +53,22 @@
 
                     <h2>Escolha a gola</h2>
                     <ul class="golas">
-                        <li class="opcao_gola gola_v" onclick="selecionaGola(this)">
-                            <div class="icone">
+                        <li class="opcao_gola gola-v" onclick="selecionaGola(this)">
+                            <div class="icone gola-v">
                                 <img src="./images/GolaV.png" alt=""> 
                             </div>
                             <h3>Gola V</h3>
                         </li>
 
-                        <li class="opcao_gola gola_redonda" onclick="selecionaGola(this)"">
-                            <div class="icone">
+                        <li class="opcao_gola gola-redonda" onclick="selecionaGola(this)">
+                            <div class="icone gola-redonda">
                                 <img src="./images/GolaRedonda.png" alt=""> 
                             </div>
                             <h3>Gola Redonda</h3>
                         </li>
 
-                        <li class="opcao_gola gola_polo" onclick="selecionaGola(this)"">
-                            <div class="icone">
+                        <li class="opcao_gola gola-polo" onclick="selecionaGola(this)">
+                            <div class="icone gola-polo">
                             <img src="./images/GolaPolo.png" alt=""> 
                             </div>
                             <h3>Gola Polo</h3>
@@ -80,21 +80,21 @@
                     <h2>Escolha o tecido</h2>
                     <ul class="tecidos">
                         <li class="opcao_tecido seda" onclick="selecionaTecido(this)">
-                            <div class="icone">
+                            <div class="icone seda">
                             <img src="./images/Seda.png" alt=""> 
                             </div>
                             <h3>Seda</h3>
                         </li>
 
                         <li class="opcao_tecido algodao" onclick="selecionaTecido(this)">
-                            <div class="icone">
+                            <div class="icone algodao">
                             <img src="./images/Algodão.png" alt=""> 
                             </div>
                             <h3>Algodão</h3>
                         </li>
 
                         <li class="opcao_tecido poliester" onclick="selecionaTecido(this)">
-                            <div class="icone">
+                            <div class="icone poliester">
                             <img src="./images/Poliester.png" alt=""> 
                             </div>
                             <h3>Poliéster</h3>
@@ -102,9 +102,9 @@
                     </ul>
                     <h2>Imagem de referência</h2>
 
-                    <input type="text" placeholder="Insira o link" onchange="isNull()"/>
+                    <input type="text" placeholder="Insira o link" />
 
-                    <button>Confirmar pedido</button>
+                    <button onclick="confirmarPedido()">Confirmar pedido</button>
                 </div>
             </div>
 

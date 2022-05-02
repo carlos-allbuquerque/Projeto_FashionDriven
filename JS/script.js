@@ -2,7 +2,8 @@ let promise = axios.get("https://mock-api.driven.com.br/api/v4/shirts-api/shirts
 promise.then(getPedidos);
 promise.then(renderPedidos)
 
-let nome = "Fade";
+let nome = prompt("Qual é o seu nome?");
+
 
 function getPedidos(promise) {
 let dados = promise.data;
@@ -43,28 +44,15 @@ function selecionaTecido(parameter) {
     habilitaBotao();
 }
 
-function isValidUrl() {
-    console.log("entrou");
-    let url = document.querySelector("input").value;
-    if (url.startsWith("https://") || url.startsWith("http://")) {
-        habilitaBotao()
-        return true;
-    }
-
-    return false;
+function isValidUrl(valor) {
+    return (valor.startsWith("https://") || valor.startsWith("http://"));
 }
-
-function isNull() {
-    console.log("nulo");
-}
-
 
 function renderPedidos(response) {
     let pedidos = response.data;
     const tag = document.querySelector(".ultimos-pedidos-list");
-    let i = 0;
-    let posicao = 10;
-    while(i < pedidos.length) {
+
+    for( let i = 0; i < pedidos.length; i++) {
         let pedido = pedidos[i];
       tag.innerHTML+=  `
       <div class="pedido">
@@ -72,26 +60,89 @@ function renderPedidos(response) {
         <div class="texto"> Criador: ${pedido.owner}</div>
     </div>
       `
-      i++;
-      posicao--;
     }
 }
-
-
 
 function habilitaBotao() {
     let botao = document.querySelector("button");
 
-    let input = document.querySelector("input");
+    let input = document.querySelector("input").value;
 
     let modeloSelecionado = modelos.querySelector(".selecionado");
     let golaSelecionada = golas.querySelector(".selecionado");
     let tecidoSelecionado = tecidos.querySelector(".selecionado");
 
     console.log(modeloSelecionado);
-  
-    if (modeloSelecionado !== null && golaSelecionada !== null && tecidoSelecionado !== null && isValidUrl(input)) {
+    if (input === "") botao.classList.remove("botao-habilitado");
+    
+    if (modeloSelecionado !== null && golaSelecionada !== null && tecidoSelecionado !== null && input !== "") {
         botao.classList.add("botao-habilitado");
     }
 }
 
+document.querySelector("input").addEventListener("input", habilitaBotao);
+
+function confirmarPedido() {
+    let input = document.querySelector("input").value;
+    if (!isValidUrl(input)) {
+        alert("URL da imagem inválida");
+        return false;
+    }
+
+    let modelo;
+    let gola;
+    let material;
+
+    let modeloSelecionado = modelos.querySelector(".selecionado");
+    let golaSelecionada = golas.querySelector(".selecionado");
+    let tecidoSelecionado = tecidos.querySelector(".selecionado");
+
+    //Definindo o modelo
+
+    if (modeloSelecionado.classList.contains("t-shirt")) {
+        modelo = "t-shirt";
+    }
+    else if (modeloSelecionado.classList.contains("camiseta")) {
+        modelo = "top-tank";
+    }
+    else if (modeloSelecionado.classList.contains("manga-longa")) {
+        modelo = "long";
+    }
+
+    //Definindo a gola
+
+    if (golaSelecionada.classList.contains("gola-v")) {
+        gola = "v-neck";
+    }
+    else if (golaSelecionada.classList.contains("gola-redonda")) {
+        gola = "round";
+    }
+    else if (golaSelecionada.classList.contains("gola-polo")) {
+        gola= "polo";
+    }
+
+    //Definindo o tecido
+
+    if (tecidoSelecionado.classList.contains("seda")) {
+        material = "silk";
+    }
+    else if (tecidoSelecionado.classList.contains("algodao")) {
+        material = "cotton";
+    }
+    else if (tecidoSelecionado.classList.contains("poliester")) {
+        material = "polyester";
+    }
+
+    let pedido = {
+        model: modelo,
+        neck: gola, 
+        material: material, 
+        image: input, 
+        owner: nome,
+        author: nome
+    }
+    console.log(pedido);
+
+    let promise = axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", pedido);
+    alert("Pedido Enviado!");
+}
