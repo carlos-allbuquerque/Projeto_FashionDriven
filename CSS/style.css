@@ -155,12 +155,13 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .pedido img{
     height: 180px;
     width: 180px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .selecionado {
@@ -171,7 +172,10 @@ h1 {
     background-color: #404EED;
     cursor: pointer;
 }
-
-.negrito {
-    font-weight: 600;
+.texto {
+    font-size: 20px;
+    line-height: 23px;
+}
+span{
+    font-weight: 700;
 }

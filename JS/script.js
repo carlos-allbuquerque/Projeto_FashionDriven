@@ -1,14 +1,24 @@
-let promise = axios.get("https://mock-api.driven.com.br/api/v4/shirts-api/shirts");
-promise.then(getPedidos);
-promise.then(renderPedidos)
+function getPedidos() {
+   let promise = axios.get("https://mock-api.driven.com.br/api/v4/shirts-api/shirts");
+
+    promise.then(renderPedidos); 
+}
+
+setInterval(getPedidos, 3000);
+let dados;
+
+function tratarErro(response) {
+    alert("Ops, não conseguimos processar sua encomenda");
+    console.log("Status code: " + erro.response.status);
+	console.log("Mensagem de erro: " + erro.response.data); 
+}
+
 
 let nome = prompt("Qual é o seu nome?");
 
+document.querySelector("input").value = "";
 
-function getPedidos(promise) {
-let dados = promise.data;
-console.log(dados);
-}
+
 
 let modelos = document.querySelector(".modelos");
 let golas = document.querySelector(".golas");
@@ -48,18 +58,22 @@ function isValidUrl(valor) {
     return (valor.startsWith("https://") || valor.startsWith("http://"));
 }
 
+
+
 function renderPedidos(response) {
     let pedidos = response.data;
-    const tag = document.querySelector(".ultimos-pedidos-list");
-
+    dados = pedidos;
+    let tag = document.querySelector(".ultimos-pedidos-list");
+    tag.innerHTML = "";
     for( let i = 0; i < pedidos.length; i++) {
         let pedido = pedidos[i];
-      tag.innerHTML+=  `
-      <div class="pedido">
-        <img src="${pedido.image}" alt="">
-        <div class="texto"> Criador: ${pedido.owner}</div>
-    </div>
-      `
+        
+        tag.innerHTML+=  `
+            <div class="pedido" onclick='getPedidoSpecs(${pedido.id})'>
+                <img src="${pedido.image}" alt="">
+                <div class="texto"> <span>Criador:</span> ${pedido.owner}</div>
+            </div>
+        `
     }
 }
 
@@ -78,6 +92,9 @@ function habilitaBotao() {
     if (modeloSelecionado !== null && golaSelecionada !== null && tecidoSelecionado !== null && input !== "") {
         botao.classList.add("botao-habilitado");
     }
+
+    document.querySelector("button").addEventListener("click", confirmarPedido);
+    
 }
 
 document.querySelector("input").addEventListener("input", habilitaBotao);
@@ -144,5 +161,33 @@ function confirmarPedido() {
     console.log(pedido);
 
     let promise = axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", pedido);
+    promise.catch(tratarErro)
     alert("Pedido Enviado!");
+}
+
+function getPedidoSpecs(id) {
+    let pegar = confirm("Gostaria de encomendar uma peça com essas mesmas definições?");
+    console.log(id);
+    let pedido = {};
+    if (pegar) {
+        console.log(dados);
+        for (let i = 0; i < dados.length; i++) {
+            if(dados[i].id === id) {
+
+                pedido = {
+                    model: dados[i].model,
+                    neck: dados[i].neck, 
+                    material: dados[i].material, 
+                    image: dados[i].image, 
+                    owner: nome,
+                    author: nome
+                }
+            }
+        }
+        
+        let promise = axios.post("https://mock-api.driven.com.br/api/v4/shirts-api/shirts", pedido);
+        
+    }
+
+    
 }
